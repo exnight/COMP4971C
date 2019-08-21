@@ -1,0 +1,207 @@
+\documentclass[12pt]{article}
+
+\input{./ref/structure.tex}
+
+\title{Introductory Backtesting Notes \\ for Quantitative Trading Strategies \\[2ex]
+  \large Maybe Some Eye-catching Subtitle}
+\author{Leo Wong}
+\date{QFIN \& COSC, HKUST \\[2ex] September, 2019}
+
+\begin{document}
+
+\begin{titlingpage}
+  \maketitle
+  \begin{abstract}
+    \enquote{All models are wrong, but some are useful}, \cite{allmodelsarewrong}. This note is compiled for COMP4971C in Fall 2019 to assist the research of quantitative trading strategies.
+  \end{abstract}
+\end{titlingpage}
+
+\fancyhead[L]{Introductory Backtesting Notes}
+
+\tableofcontents
+
+\section{Introduction}
+
+This note briefly introduces some industrial practices in backtesting a quantitative trading strategy for general first order securities (e.g. equity share, commodity future, etc.) along with some common mistakes. The majority of the content comes from several books and articles including but not limited to \cite{insideblackbox}, \cite{succalgotrading}, \cite{epchan2008}. All references are listed at the end of the note.
+
+\tikzset{%
+  block/.style    = {draw, thick, rectangle, minimum height = 3em, minimum width = 3em},
+  sum/.style      = {draw, circle, node distance = 2cm}, % Adder
+  input/.style    = {coordinate}, % Input
+  output/.style   = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\suma}{\Large$+$}
+\newcommand{\inte}{$\displaystyle \int$}
+\newcommand{\derv}{\huge$\frac{d}{dt}$}
+
+\begin{tikzpicture}[auto, thick, node distance=2cm, >=triangle 45]
+  \node at (2, 11) {\textsc{\large Structure of Backtest System}};
+  \draw [thick] (1, 0) rectangle (13, 10);
+
+  \draw node at (-1, 5) [block, name=data] {Data};
+  \draw node at (3, 8) [block, name=alpha] {Alpha Model};
+  \draw node at (6, 8) [block, name=risk] {Risk Model};
+  \draw node at (10, 8) [block, name=cost] {Transaction Cost Model};
+  \draw node at (7, 5) [block, name=portfolio] {Portfolio Construction Engine};
+  \draw node at (7, 2) [block, name=execution] {Execution Engine};
+
+  \draw[->] (data) -- (1, 5);
+  \draw[->] (alpha) -- (portfolio);
+  \draw[->] (risk) -- (portfolio);
+  \draw[->] (cost) -- (portfolio);
+  \draw[<->] (portfolio) -- (execution);
+
+\end{tikzpicture}
+
+\section{Note and Assumption}
+
+\begin{enumerate}
+  \item All \enquote{suggested} values are annualized, calculations are stated below
+  \item All \enquote{suggested} values are calculated after deducting transaction cost
+  \item Returns at different time \(t\) are assumed to be IID, otherwise the estimation of Sharpe ratio from sample needs to be adjusted accordingly
+\end{enumerate}
+
+\section{Primary Metrics}
+
+Primary metrics should be used for all types of trading strategies.
+
+\subsection{Sharpe Ratio}
+
+\subsubsection*{Metric Introduction}
+
+Sharpe ratio is first introduced by \cite{sharpe1966}. Its original name \enquote{Reward-to-Variability Ratio} reflects its nature of balancing return and risk of a strategy. According to the definition in \cite{sharpe1994}, assume \(R_{Pt}\) as a \(t\)-period return series, \(R_{ft}\) as the risk-free rate series over the same period. Then the Sharpe ratio \(S_h\) from \(t=1\) to \(t=T\):
+
+\begin{align}
+  S_h &\equiv \frac{\overline{D}}{\sigma_D} \\
+  \text{where}~D &\equiv R_{Pt} - R_{ft} \\
+  \overline{D} &\equiv \frac{1}{T} \sum_{t=1}^T D_t \\
+  \sigma_D &\equiv \sqrt{\frac{\sum_{t=1}^T (D_t-\overline{D})^2}{T-1}}
+\end{align}
+
+This Sharpe ratio indicates the historical average differential return per unit pf historical variability of the differential return (\cite{sharpe1966}). In simpler terms, Sharpe ratio measures the expected return gained per unit of risk taken for a zero investment strategy. The Sharpe ratio does not cover cases in which only one investment return is involved. \cite{sharpe1994}
+
+\subsubsection*{Suggested Level}
+
+insert net value figure of different Sharpe ratio
+
+\subsection{Maximum Drawdown}
+
+\subsubsection*{Metric Introduction}
+
+lorem
+
+\begin{align*}
+  y = f(x)
+\end{align*}
+
+lorem
+
+\subsubsection*{Suggested Level}
+
+lorem
+
+\subsection{Win Rate, Profit-Loss Factor and Payoff Ratio}
+
+\subsubsection*{Metric Introduction}
+
+Let \(\pi\) be the profit/loss of each trade, \(N\) be the total number of trades. Assume every trade results in non-zero profit or loss, i.e. \(n_{\pi=0} = 0\), then \(n = n_{\pi<0} + n_{\pi>0}\).
+
+\begin{align*}
+  w &= \frac{n_{\pi>0}}{N} \\
+  PnL &= \frac{\sum_{i=1}^N \pi_{\pi>0}}{\sum_{i=1}^N \pi_{\pi<0}} \\
+  r &= \frac{\sum_{i=1}^N \pi_{\pi>0}}{\sum_{i=1}^N \pi_{\pi<0}} \cdot \frac{n_{\pi<0}}{n_{\pi>0}} \\
+  w &= \frac{PL}{PL+r} \\
+  RoR &= (1-w)^R
+\end{align*}
+
+lorem
+
+\subsubsection*{Suggested Level}
+
+lorem
+
+\section{Secondary Metrics}
+
+Secondary metrics provide easy explanation for non-finance-heavy personnel.
+
+\subsection{Compound Annual Growth Rate (CAGR)}
+
+\subsubsection*{Metric Introduction}
+
+lorem
+
+\begin{align*}
+  y = f(x)
+\end{align*}
+
+lorem
+
+\subsubsection*{Suggested Level}
+
+lorem
+
+\subsection{Volatility of Return}
+
+\subsubsection*{Metric Introduction}
+
+lorem
+
+\begin{align*}
+  y = f(x)
+\end{align*}
+
+lorem
+
+\subsubsection*{Suggested Level}
+
+lorem
+
+\subsection{Maximum Drawdown Duration}
+
+\subsubsection*{Metric Introduction}
+
+lorem
+
+\begin{align*}
+  y = f(x)
+\end{align*}
+
+lorem
+
+\subsubsection*{Suggested Level}
+
+lorem
+
+\section{Common Pitfall}
+
+This section introduces multiple common mistakes made by quants in backtest.
+
+\subsection{Survivorship Bias}
+
+lorem
+
+\subsection{Transaction Costs}
+
+lorem
+
+\subsection{Market Nature/Pattern}
+
+lorem
+
+\subsection{Look Ahead Bias}
+
+lorem
+
+\subsection{Overfitting}
+
+lorem
+
+\section*{Conclusion}
+
+lorem
+
+\renewcommand{\refname}{Reference} % Change the default bibliography title
+\printbibliography
+
+\end{document}
