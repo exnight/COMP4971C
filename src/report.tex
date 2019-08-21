@@ -1,0 +1,67 @@
+\documentclass[12pt]{article}
+
+\input{./ref/structure.tex}
+
+\title{Research Topic to be determined \\[2ex]
+  \large COMP4971C - Independent Work (Fall 2019)}
+\author{WONG Jia Yeung, Leo}
+\date{November, 2019}
+
+\begin{document}
+
+\begin{titlingpage}
+  \maketitle
+  \begin{abstract}
+    lorem
+  \end{abstract}
+\end{titlingpage}
+
+\fancyhead[L]{Research Topic to be determined}
+
+\tableofcontents
+
+\section{Introduction}
+
+\section{Disclaimer}
+
+The information presented in this research is not intended as, and shall not be understood as financial advice to enter in any security transactions or to engage in any of the investment strategies.
+
+\section{Research Topic}
+
+\section{Methodology}
+
+\subsection{Tools}
+
+A customised backtest system is created for this research project. The system is written in lorem and the source code can be found at lorem.
+
+\subsection{Data}
+
+\subsection{Evaluation Metrics}
+
+Sharpe ratio, maximum drawdown are the major evaluation metrics used.
+
+\subsubsection{Sharpe Ratio}
+
+Sharpe ratio was first introduced by \cite{sharpe1966}. It measures the expected return gained per unit of risk taken for a zero investment strategy. According to the definition in \cite{sharpe1994}, assume \(R_{Pt}\) as a \(t\)-period return series, \(R_{ft}\) as the risk-free rate series over the same period. Then the Sharpe ratio \(S_h\) from \(t=1\) to \(t=T\):
+
+\begin{align}
+  S_h &\equiv \frac{\overline{D}}{\sigma_D} \\
+  \text{where}~D &\equiv R_{Pt} - R_{ft} \\
+  \overline{D} &\equiv \frac{1}{T} \sum_{t=1}^T D_t \\
+  \sigma_D &\equiv \sqrt{\frac{\sum_{t=1}^T (D_t-\overline{D})^2}{T-1}}
+\end{align}
+
+\subsubsection{Maximum Drawdown}
+
+\section{Strategy Implementation}
+
+\section{Result}
+
+\section{Conclusion}
+
+\section{Appendix}
+
+\renewcommand{\refname}{Reference} % Change the default bibliography title
+\printbibliography
+
+\end{document}
