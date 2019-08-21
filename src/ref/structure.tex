@@ -1,0 +1,92 @@
+\usepackage[a4paper, margin=1in]{geometry} % Margins
+\usepackage{fancyhdr} % Set header and footer
+\usepackage{titling}
+
+\usepackage[T1]{fontenc} % For international characters
+\usepackage{XCharter} % XCharter as the main font
+
+\usepackage[
+  backend=biber,
+  style=numeric,
+  citestyle=authoryear,
+  sorting=none
+  ]{biblatex}
+\addbibresource{./Ref/reference.bib}
+
+\usepackage[english]{babel} % Use english by default
+\usepackage{csquotes}
+
+\usepackage{amsmath, amsthm, amssymb, amsfonts, mathtools}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows}
+% \usepackage[]{algorithm2e}
+% \usepackage{caption, enumerate}
+% \usetikzlibrary{graphdrawing, shapes}
+% \usegdlibrary{trees}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=black
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{Leo W.}
+\fancyfoot[R]{\thepage}
+\setlength{\headheight}{15pt}
+
+%----------------------------------------------------------------------------------------
+%	CUSTOM COMMANDS
+%----------------------------------------------------------------------------------------
+
+\newcommand{\articletitle}[1]{\renewcommand{\articletitle}{#1}} % Define a command for storing the article title
+\newcommand{\articlecitation}[1]{\renewcommand{\articlecitation}{#1}} % Define a command for storing the article citation
+\newcommand{\doctitle}{\articlecitation\ --- ``\articletitle''} % Define a command to store the article information as it will appear in the title and header
+\newcommand{\doctitlenocite}{\articletitle} % No citation
+
+\newcommand{\datenotesstarted}[1]{\renewcommand{\datenotesstarted}{#1}} % Define a command to store the date when notes were first made
+\newcommand{\docdate}[1]{\renewcommand{\docdate}{#1}} % Define a command to store the date line in the title
+
+\newcommand{\docauthor}[1]{\renewcommand{\docauthor}{#1}} % Define a command for storing the article notes author
+
+\newcommand{\bookcitation}[1]{\renewcommand{\bookcitation}{#1}} % Define a command for storing the book citation
+
+% Define a command for the structure of the document title
+\newcommand{\printtitle}{
+\begin{center}
+\textbf{\Large{\doctitle}}
+
+\docdate
+
+\docauthor
+\end{center}
+}
+
+% No citation
+\newcommand{\printtitlenocite}{
+\begin{center}
+\textbf{\Large{\doctitlenocite}}
+
+\docauthor
+
+\docdate
+\end{center}
+}
+
+%----------------------------------------------------------------------------------------
+%	STRUCTURE MODIFICATIONS
+%----------------------------------------------------------------------------------------
+
+\setlength{\parskip}{3pt} % Slightly increase spacing between paragraphs
+
+% Uncomment to center section titles
+% \usepackage{sectsty}
+% \sectionfont{\centering}
+
+% Uncomment for Roman numerals for section numbers
+% \renewcommand\thesection{\Roman{section}}
+% \renewcommand\thesubsection{\thesection.\Roman{subsection}}
