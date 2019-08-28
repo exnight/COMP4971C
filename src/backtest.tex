@@ -22,7 +22,17 @@
 
 \section{Introduction}
 
+Backtesting is a compulsory stage in the development of any quantitative trading strategies. It evaluates the performance of a strategy with historical data and provides the following usages:
+
+\begin{enumerate}
+  \item validate the effectiveness of the trading idea
+  \item tune the parameters of the strategy
+  \item predict the future performance (assuming repeating market patterns)
+\end{enumerate}
+
 This note briefly introduces some industrial practices in backtesting a quantitative trading strategy for general first order securities (e.g. equity share, commodity future, etc.) along with some common mistakes. The majority of the content comes from several books and articles including but not limited to \cite{insideblackbox}, \cite{succalgotrading}, \cite{epchan2008}. All references are listed at the end of the note.
+
+The structure diagram of a suggested backtest system is included below.
 
 \tikzset{%
   block/.style    = {draw, thick, rectangle, minimum height = 3em, minimum width = 3em},
@@ -79,11 +89,20 @@ Sharpe ratio is first introduced by \cite{sharpe1966}. Its original name \enquot
   \sigma_D &\equiv \sqrt{\frac{\sum_{t=1}^T (D_t-\overline{D})^2}{T-1}}
 \end{align}
 
-This Sharpe ratio indicates the historical average differential return per unit pf historical variability of the differential return (\cite{sharpe1966}). In simpler terms, Sharpe ratio measures the expected return gained per unit of risk taken for a zero investment strategy. The Sharpe ratio does not cover cases in which only one investment return is involved. \cite{sharpe1994}
+This Sharpe ratio indicates the historical average differential return per unit pf historical variability of the differential return (\cite{sharpe1966}). In simpler terms, Sharpe ratio measures the expected return gained per unit of risk taken for a zero investment strategy. The Sharpe ratio does not cover cases in which only one investment return is involved (\cite{sharpe1994}).
 
 \subsubsection*{Suggested Level}
 
-insert net value figure of different Sharpe ratio
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.22]{./ref/figure/sharpe_nav_1080.png}
+  \caption{Net value graph of multiple sharpe ratios}
+  \label{fig:sharpe_navs}
+\end{figure}
+
+The above diagram shows 3 different return series of Sharpe ratios ranging from 1 to 3, with 252 steps (simulating year-long daily returns). For a day-frequency strategy, \(S_h > 1\) usually is not enough to generate consistent profits. A Sharpe value greater than 1.5 or even 2 is recommended. For longer-frequency strategies (i.e. weekly, monthly), \(S_h > 0.7\) can be acceptable, \(S_h > 1.2\) can be regarded as very good.
+
+All values in the above section should be treated as reference instead of absolute limit/standard to judge a strategy.
 
 \subsection{Maximum Drawdown}
 
