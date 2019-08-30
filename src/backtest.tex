@@ -82,12 +82,12 @@ Primary metrics should be used for all types of trading strategies.
 
 Sharpe ratio is first introduced by \cite{sharpe1966}. Its original name \enquote{Reward-to-Variability Ratio} reflects its nature of balancing return and risk of a strategy. According to the definition in \cite{sharpe1994}, assume \(R_{Pt}\) as a \(t\)-period return series, \(R_{ft}\) as the risk-free rate series over the same period. Then the Sharpe ratio \(S_h\) from \(t=1\) to \(t=T\):
 
-\begin{align}
+\begin{align*}
   S_h &\equiv \frac{\overline{D}}{\sigma_D} \\
   \text{where}~D &\equiv R_{Pt} - R_{ft} \\
   \overline{D} &\equiv \frac{1}{T} \sum_{t=1}^T D_t \\
   \sigma_D &\equiv \sqrt{\frac{\sum_{t=1}^T (D_t-\overline{D})^2}{T-1}}
-\end{align}
+\end{align*}
 
 This Sharpe ratio indicates the historical average differential return per unit pf historical variability of the differential return (\cite{sharpe1966}). In simpler terms, Sharpe ratio measures the expected return gained per unit of risk taken for a zero investment strategy. The Sharpe ratio does not cover cases in which only one investment return is involved (\cite{sharpe1994}).
 
@@ -108,17 +108,18 @@ All values in the above section should be treated as reference instead of absolu
 
 \subsubsection*{Metric Introduction}
 
-lorem
+Maximum drawdown is a specific measure of drawdown (the peak-to-trough decline during a specified timespan) that measures the greatest decline from a peak, before a new peak is reached.
 
 \begin{align*}
-  y = f(x)
+  MDD &= \min DD_i \tag*{where \(i \in {\{0, ..., T \}} \)} \\
+  DD_t &= \frac{V_t}{\max \{V_0, V_1, ..., V_t \}}-1 \tag*{for \(t \in {\{0, ..., T \}} \)}
 \end{align*}
 
-lorem
+Note that it only measures the size of the largest loss, not the frequency of large losses. MDD does not indicate how long it took an investor to recover from the loss, or if the investment even recovered at all.
 
 \subsubsection*{Suggested Level}
 
-lorem
+insert (maximum) drawdown figure
 
 \subsection{Win Rate, Profit-Loss Factor and Payoff Ratio}
 
