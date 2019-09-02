@@ -2,7 +2,8 @@
 
 \input{./ref/structure.tex}
 
-\title{Research Topic to be determined \\[2ex]
+\title{Multi-Factor Portfolio Optimisation \\ with Machine Learning \\[2ex]
+  \large Examining the efficiency of the Hong Kong stock market \\[4ex]
   \large COMP4971C - Independent Work (Fall 2019)}
 \author{WONG Jia Yeung, Leo}
 \date{November, 2019}
@@ -12,21 +13,23 @@
 \begin{titlingpage}
   \maketitle
   \begin{abstract}
-    lorem
+    In this research project, the feasibility of applying machine learning methods in financial portfolio construction and optimisation is examined, while simultaneously testing the market efficiency of the Hong Kong stock market.
   \end{abstract}
 \end{titlingpage}
 
-\fancyhead[L]{Research Topic to be determined}
+\fancyhead[L]{Multi-Factor Portfolio Optimisation with Machine Learning}
 
 \tableofcontents
 
 \section{Introduction}
 
+The finance industry is one of the major driving forces of Hong Kong. Portfolio construction and optimisation has always been a tedious work for discretionary asset managers and individual investors. With the increasing integration and popularity of machine learning techniques in various industries, the finance industry provides an experimental field with great incentives.
+
+To narrow down the scope of research, a multi-factor model is used to constrct a stock-only portfolio, focusing on the Hong Kong stock market.
+
 \section{Disclaimer}
 
 The information presented in this research is not intended as, and shall not be understood as financial advice to enter in any security transactions or to engage in any of the investment strategies.
-
-\section{Research Topic}
 
 \section{Methodology}
 
@@ -36,28 +39,34 @@ A customised backtest system is created for this research project. The system is
 
 \subsection{Data}
 
+The trading universe includes stocks presented in the Hong Kong market (HKEX) from 2006 to 2019 (June 30). Both fundamental and price data are used.
+
 \subsection{Evaluation Metrics}
 
-Sharpe ratio, maximum drawdown are the major evaluation metrics used.
+Sharpe ratio, maximum drawdown and win rate are the major evaluation metrics, while other metrics such as volatility and drawdown duration are considered as well.
 
 \subsubsection{Sharpe Ratio}
 
 Sharpe ratio was first introduced by \cite{sharpe1966}. It measures the expected return gained per unit of risk taken for a zero investment strategy. According to the definition in \cite{sharpe1994}, assume \(R_{Pt}\) as a \(t\)-period return series, \(R_{ft}\) as the risk-free rate series over the same period. Then the Sharpe ratio \(S_h\) from \(t=1\) to \(t=T\):
 
-\begin{align}
+\begin{align*}
   S_h &\equiv \frac{\overline{D}}{\sigma_D} \\
   \text{where}~D &\equiv R_{Pt} - R_{ft} \\
   \overline{D} &\equiv \frac{1}{T} \sum_{t=1}^T D_t \\
   \sigma_D &\equiv \sqrt{\frac{\sum_{t=1}^T (D_t-\overline{D})^2}{T-1}}
-\end{align}
+\end{align*}
 
 \subsubsection{Maximum Drawdown}
+
+\subsubsection{Volatility}
 
 \section{Strategy Implementation}
 
 \section{Result}
 
 \section{Conclusion}
+
+\section{Future Work}
 
 \section{Appendix}
 
