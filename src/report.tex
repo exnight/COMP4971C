@@ -113,9 +113,11 @@ First, classify each stock $s_i \in S$ at $t+h$ given the information upto $t$. 
 The same procedures are performed on both the random forest model and raw signals.
 
 
-\section{Result*}
+\section{Result}
 
 The random forest model shows significant Sharpe ratio and win rate improvement in most most cases regardless of the sector and test periods. We report the aggregate performance of Sharpe and win rate in figure \ref{fig:rf_raw_sharpe} and \ref{fig:rf_raw_win_rate} respectively.
+
+The results are generated using specific configuration of trading situation, i.e. the length of lookback and holding periods.
 
 \begin{figure}[ht]
   \begin{center}
@@ -133,10 +135,15 @@ The random forest model shows significant Sharpe ratio and win rate improvement 
   \label{fig:rf_raw_win_rate}
 \end{figure}
 
+The figures show the improvement by the Random Forest model in the test periods. For most sectors except "telecomm" and "energy", there are consistent benefits of using a random forest model on top of the original, raw signal and perform a long-short strategy.
+
 The results of different test periods are shown at the Appendix.
 
-\section{Conclusion*}
+\section{Conclusion}
 
+We can clearly see the potential of applying machine learning methods in the finance industry, more specifically, in the Hong Kong stock market for trading signal generation and improvement.
+
+This project is a mere exploration into financial machine learning, revealing a small part of what predictive models and algorithms may achieve in the market. Given the market inefficiency in Asia and its under-development of algorithmic trading comparing to the Western, especially the U.S. market, we believe that there is great room for the expansion of computer technology.
 
 \section{Future Work}
 
@@ -144,8 +151,9 @@ We may expand our work to overcome current constraints, including but not limite
 
 Due to data limitations, we are restricted to only price/volume data at a daily frequency. The lack of variaty and relatively low frequency hinder the testing of more complex asset pricing models, trading strategies, as well as complex machine learning methods.
 
+Due to data limitations, we do not put much effort in tuning the machine learning model. Our configuration consists of mostly default parameters. With more parameter optimisation such as grid search, we may achieve more aggressive results and more robust model variations.
 
-\section{Appendix*}
+\section{Appendix}
 
 \begin{figure}[!ht]
   \begin{center}
