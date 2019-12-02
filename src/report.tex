@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 \documentclass[12pt]{article}
 
 \input{./ref/structure.tex}
@@ -116,9 +115,9 @@ The same procedures are performed on both the random forest model and raw signal
 
 \section{Result*}
 
-The random forest model shows significant Sharpe ratio and win rate improvement in most most cases regardless of the sector and test periods.
+The random forest model shows significant Sharpe ratio and win rate improvement in most most cases regardless of the sector and test periods. We report the aggregate performance of Sharpe and win rate in figure \ref{fig:rf_raw_sharpe} and \ref{fig:rf_raw_win_rate} respectively.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \begin{center}
     \includegraphics[width=1\linewidth]{figure/rf_raw_sharpe.png}
   \end{center}
@@ -126,13 +125,15 @@ The random forest model shows significant Sharpe ratio and win rate improvement 
   \label{fig:rf_raw_sharpe}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!ht]
   \begin{center}
     \includegraphics[width=1\linewidth]{figure/rf_raw_win_rate.png}
   \end{center}
   \caption{Win Rate Comparison of RF Model and Raw}
   \label{fig:rf_raw_win_rate}
 \end{figure}
+
+The results of different test periods are shown at the Appendix.
 
 \section{Conclusion*}
 
@@ -146,6 +147,69 @@ Due to data limitations, we are restricted to only price/volume data at a daily 
 
 \section{Appendix*}
 
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figure/rf_raw_Sharpe_time_0.png}
+  \end{center}
+  \caption{Sharpe Comparison at Test Period 1}
+  \label{fig:rf_raw_Sharpe_time_1}
+\end{figure}
+
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figure/rf_raw_Sharpe_time_1.png}
+  \end{center}
+  \caption{Sharpe Comparison at Test Period 2}
+  \label{fig:rf_raw_Sharpe_time_2}
+\end{figure}
+
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figure/rf_raw_Sharpe_time_2.png}
+  \end{center}
+  \caption{Sharpe Comparison at Test Period 3}
+  \label{fig:rf_raw_Sharpe_time_3}
+\end{figure}
+
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figure/rf_raw_Sharpe_time_3.png}
+  \end{center}
+  \caption{Sharpe Comparison at Test Period 4}
+  \label{fig:rf_raw_Sharpe_time_4}
+\end{figure}
+
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figure/rf_raw_win_rate_time_0.png}
+  \end{center}
+  \caption{Win Rate Comparison at Test Period 1}
+  \label{fig:rf_raw_win_rate_time_1}
+\end{figure}
+
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figure/rf_raw_win_rate_time_1.png}
+  \end{center}
+  \caption{Win Rate Comparison at Test Period 2}
+  \label{fig:rf_raw_win_rate_time_2}
+\end{figure}
+
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figure/rf_raw_win_rate_time_2.png}
+  \end{center}
+  \caption{Win Rate Comparison at Test Period 3}
+  \label{fig:rf_raw_win_rate_time_3}
+\end{figure}
+
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{figure/rf_raw_win_rate_time_3.png}
+  \end{center}
+  \caption{Win Rate Comparison at Test Period 4}
+  \label{fig:rf_raw_win_rate_time_4}
+\end{figure}
 
 \renewcommand{\refname}{Reference} % Change the default bibliography title
 \printbibliography
