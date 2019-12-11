@@ -13,7 +13,7 @@
 \begin{titlingpage}
   \maketitle
   \begin{abstract}
-    In this research project, the feasibility of improving "plain" momentum strategy with machine learning method (Random Forest) in financial portfolio construction and optimisation is examined, while simultaneously testing the market efficiency of the Hong Kong stock market.
+    In this research project, we examine the feasibility of improving "plain" momentum strategy with machine learning method in financial portfolio construction and optimisation, while simultaneously test the market efficiency of the Hong Kong stock market. We analyse the effectiveness of random forest models on a momentum-based trading strategy with daily price/volume data of securities listed on the Hong Kong Exchange. The models bring significant improvement of financial performance, but there are still concerns regarding various financial concepts which should be considered with care.
   \end{abstract}
 \end{titlingpage}
 
@@ -73,7 +73,7 @@ Sharpe ratio was first introduced by \cite{sharpe1966}. It measures the expected
 
 \subsubsection{Win Rate}
 
-Win rate is expressed as the ratio of profiting time to the total investment timespan. Let \(\pi_t\) be the profit/loss of a strategy at time \(t\), \(T\) be the total number of steps (timespan). Assume the profit/loss is non-zero at every time \(t\), i.e. \(n_{\pi=0} = 0\), then \(T = n_{\pi<0} + n_{\pi>0}\). Let \(w\) be the win rate, \(pf\) be the profit factor, \(pr\) be the payoff ratio, \(RoR\) be the risk of ruin.
+Win rate is expressed as the ratio of profiting time to the total investment timespan. Let \(\pi_t\) be the profit/loss of a strategy at time \(t\), \(T\) be the total number of steps (timespan). Assume the profit/loss is non-zero at every time \(t\), i.e. \(n_{\pi=0} = 0\), then \(T = n_{\pi<0} + n_{\pi>0}\).
 
 \begin{align*}
   w &\equiv \frac{n_{\pi>0}}{n_{\pi<0} + n_{\pi>0}} \\
@@ -108,16 +108,12 @@ We use random forest as an overlay of the original momentum signal. The model ai
 
 We adopt a simple long-short strategy.
 
-First, classify each stock $s_i \in S$ at $t+h$ given the information upto $t$. Second, compute the prediction confidence to obtain a weight matrix for trade execution. Third, long the top $k\%$ and short the bottom $k\%$ to create a long-short portfolio consisting of $2k\%$ stocks as the top securities are the most undervalued and the bottom ones are the most overvalued, currently $k = 5$.
-
-The same procedures are performed on both the random forest model and raw signals.
+First, classify each stock $s_i \in S$ at $t+h$ given the information upto $t$. Second, compute the prediction confidence to obtain a weight matrix for trade execution. Third, long the top $k\%$ and short the bottom $k\%$ to create a long-short portfolio consisting of $2k\%$ stocks as the top securities are the most undervalued and the bottom ones are the most overvalued, currently $k = 5$. The same procedures are performed on both the random forest model and raw signals.
 
 
 \section{Result}
 
-The random forest model shows significant Sharpe ratio and win rate improvement in most most cases regardless of the sector and test periods. We report the aggregate performance of Sharpe and win rate in figure \ref{fig:rf_raw_sharpe} and \ref{fig:rf_raw_win_rate} respectively.
-
-The results are generated using specific configuration of trading situation, i.e. the length of lookback and holding periods.
+The random forest model shows significant Sharpe ratio and win rate improvement in most most cases regardless of the sector and test periods. We report the aggregate performance of Sharpe and win rate in figure \ref{fig:rf_raw_sharpe} and \ref{fig:rf_raw_win_rate} respectively. Additional results of the remaining test periods are shown at the Appendix. All results are generated using specific configuration of trading situation, i.e. the length of lookback and holding periods.
 
 \begin{figure}[ht]
   \begin{center}
@@ -137,8 +133,6 @@ The results are generated using specific configuration of trading situation, i.e
 
 The figures show the improvement by the Random Forest model in the test periods. For most sectors except "telecomm" and "energy", there are consistent benefits of using a random forest model on top of the original, raw signal and perform a long-short strategy.
 
-The results of different test periods are shown at the Appendix.
-
 \section{Conclusion}
 
 We can clearly see the potential of applying machine learning methods in the finance industry, more specifically, in the Hong Kong stock market for trading signal generation and improvement.
@@ -151,7 +145,7 @@ We may expand our work to overcome current constraints, including but not limite
 
 Due to data limitations, we are restricted to only price/volume data at a daily frequency. The lack of variaty and relatively low frequency hinder the testing of more complex asset pricing models, trading strategies, as well as complex machine learning methods.
 
-Due to data limitations, we do not put much effort in tuning the machine learning model. Our configuration consists of mostly default parameters. With more parameter optimisation such as grid search, we may achieve more aggressive results and more robust model variations.
+Due to resource limitations, we do not put much effort in tuning the machine learning model. Our configuration consists of mostly default parameters. With more parameter optimisation such as grid search, we may achieve more aggressive results and more robust model variations.
 
 \section{Appendix}
 
