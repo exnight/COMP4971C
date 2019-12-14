@@ -136,7 +136,7 @@ The above diagram shows the net value and corresponding drawdown throughout the 
 
 \subsubsection*{Metric Introduction}
 
-Let \(\pi_t\) be the profit/loss of a strategy at time \(t\), \(T\) be the total number of steps (timespan). Assume the profit/loss is non-zero at every time \(t\), i.e. \(n_{\pi=0} = 0\), then \(T = n_{\pi<0} + n_{\pi>0}\). Let \(w\) be the win rate, \(pf\) be the profit factor, \(pr\) be the payoff ratio, \(RoR\) be the risk of ruin.
+Let \(\pi_t\) be the profit/loss of a strategy at time \(t\), \(T\) be the total number of steps (timespan). Assume the profit/loss is non-zero at every time \(t\), i.e. \(n_{\pi=0} = 0\), then \(T = n_{\pi<0} + n_{\pi>0}\). Let \(w\) be the win rate, \(pf\) be the profit factor, \(pr\) be the payoff ratio.
 
 \begin{align*}
   w &= \frac{pf}{pf+pr} \\
@@ -147,15 +147,11 @@ Let \(\pi_t\) be the profit/loss of a strategy at time \(t\), \(T\) be the total
 
 Win rate is expressed as the ratio of profiting time to the total investment timespan. Profit factor is the ratio of the sum of winning trades and losing trades. Payoff ratio is the ratio of winning trades average to losing trades average.
 
-\begin{align*}
-  RoR &= (1-w)^R
-\end{align*}
-
-lorem
-
 \subsubsection*{Suggested Level}
 
-lorem
+Win rate and payoff ratio are determined by the strategy characteristics, for example bare momentum-based strategies are usually related with relatively lower win rates due to the price reversion nature in multiple short term periods. Profit factor is more deterministic due to its definition. Therefore, we should focus on the former two metrics while win rate being the more dominant factor.
+
+As win rate reflects the profiting consistency of a strategy, a higher win rate is almost always preferred. Win rate below the $50\%$ mark requires higher payoff ratio to compensate, the opposite portion is fine with smaller profit margin. Many profitable strategies made by individuals have win rates around $45\%$ to $55\%$. Professional knowledge and optimisation is often required to go beyond the common band.
 
 \section{Secondary Metrics}
 
