@@ -171,23 +171,32 @@ CAGR is not the true rate of return, but rather a smoothed, representational fig
 
 \subsubsection*{Suggested Level}
 
-The desired CAGR depends on the nature of the security and even its sector. Different types of securities (e.g. equity, fixed income, index, derivative) have different return characteristics.
+The desired CAGR depends on the nature of the security and even its sector. Different types of securities (e.g. equity, fixed income, index, derivative) have different return characteristics. Equity-type securities generally have a higher CAGR while corresponding derivatives are even more volatile. The performance of fixed income products are more consistent over time.
+
+Note that CAGR can be affected by the level of leverage. Let $I_0$ and $L_0$ be the amount of private capital and leverage (borrowed capital) at time $t=0$, $r$ be the interest rate. Assume a leverage ratio of $0.2$, i.e. $\frac{L_0}{I_0+L_0} = 0.2$. Then
+\begin{align*}
+  CAGR &= \bigg(\frac{V_T-L_0\times (1+r)^T}{I_0} \bigg)^{\frac{1}{T}}-1 \\
+       &= \bigg(\frac{V_T-0.25I_0\times (1+r)^T}{I_0} \bigg)^{\frac{1}{T}}-1 \\
+       &= \bigg(\frac{V_T}{I_0}-0.25(1+r)^T \bigg)^{\frac{1}{T}}-1
+\end{align*}
+
+Therefore, when comparing the CAGR of different strategies, the leverage level and cost should be kept the same.
 
 \subsection{Volatility of Return}
 
 \subsubsection*{Metric Introduction}
 
-lorem
+Volatility is a statistical measure of the dispersion of returns. Volatility is often measured as either the standard deviation or variance of returns. Given $r_1, r_2, \dots , r_t$ be the return series of a $t$-step timespan.
 
 \begin{align*}
-  y = f(x)
+  \sigma_r = \sqrt\frac{\sum_{i=1}^t (r_i-\mu_r)^2}{t-1}
 \end{align*}
 
-lorem
+In most cases, higher volatility reflects higher risk of the strategy or security. So investors should monitor the metric as a proxy of investment risk.
 
 \subsubsection*{Suggested Level}
 
-lorem
+Investors will have their corresponding level of tolerance. One may not prefer frequent, large fluctuations of their asset value such as a retired person who just aim to keep his/her savings with minimal investment income to combat inflation. On the other hand, younger investor may be more aggressive as they are able to endure more risks. Thus, the level of risk tolerance should be tailored based on personal situation independently.
 
 \subsection{Maximum Drawdown Duration}
 
