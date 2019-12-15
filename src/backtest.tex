@@ -12,7 +12,7 @@
 \begin{titlingpage}
   \maketitle
   \begin{abstract}
-    This note is compiled for COMP4971C in Fall 2019 to assist the research and implementation of quantitative trading strategies. This note includes suggested evaluation metrics and common pitfalls for beginners in quantitative trading and backtest.
+    This note is compiled for COMP4971C in Fall 2019 to assist the research and implementation of quantitative trading strategies. This note includes suggested evaluation metrics and common pitfalls for beginners in quantitative trading and backtest. Advanced financial knowledge is not required as the content revolves around general but important concepts and some easy-to-implement approaches.
 
     It is common nowadays to use mathematical and statistical models to evalute financial securities and take corresponding actions. However, attention to details is one of the crucial factors to make a strategy successful in reality, when various academic assumptions do not hold. Having proper assumptions and configuration for backtest may cover more situations and provide more robust evaluation of trading strategies. Thus, it enhances the quality of trading strategies as the backtest provides more realistic results and more accurate approximations.
 
@@ -40,11 +40,11 @@ The structure diagram of a suggested backtest system is included below.
 
 \tikzset{%
   block/.style    = {draw, thick, rectangle, minimum height = 3em, minimum width = 3em},
-  sum/.style      = {draw, circle, node distance = 2cm}, % Adder
-  input/.style    = {coordinate}, % Input
-  output/.style   = {coordinate} % Output
+  sum/.style      = {draw, circle, node distance = 2cm},
+  input/.style    = {coordinate},
+  output/.style   = {coordinate}
 }
-% Defining string as labels of certain blocks.
+
 \newcommand{\suma}{\Large$+$}
 \newcommand{\inte}{$\displaystyle \int$}
 \newcommand{\derv}{\huge$\frac{d}{dt}$}
