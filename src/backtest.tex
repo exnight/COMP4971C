@@ -198,21 +198,6 @@ In most cases, higher volatility reflects higher risk of the strategy or securit
 
 Investors will have their corresponding level of tolerance. One may not prefer frequent, large fluctuations of their asset value such as a retired person who just aim to keep his/her savings with minimal investment income to combat inflation. On the other hand, younger investor may be more aggressive as they are able to endure more risks. Thus, the level of risk tolerance should be tailored based on personal situation independently.
 
-\subsection{Maximum Drawdown Duration}
-
-\subsubsection*{Metric Introduction}
-
-lorem
-
-\begin{align*}
-  y = f(x)
-\end{align*}
-
-lorem
-
-\subsubsection*{Suggested Level}
-
-lorem
 
 \section{Common Pitfall}
 
@@ -220,23 +205,40 @@ This section introduces multiple common mistakes made by quants in backtest.
 
 \subsection{Survivorship Bias}
 
-lorem
+Survivorship bias may lead to significantly inflated strategy performance. It occurs when strategies are tested on datasets that only include securities which "survived" the whole test period but excluding those delisted during the meantime such as, technology stocks that went bankrupt after the dot-com boom in early 2000s, closed banks in the 2008 global financial crisis. Restricting the trading universe to "survived" companies introduces a survivorship bias based on their historical success.
+
+We may mitigate survivorship bias in backtest with survivorship bias free datasets and/or more recent data. The former one includes information of delisted equities during the test period while it is likely that fewer stocks are delisting in a more recent, shorter time period.
 
 \subsection{Transaction Costs}
 
-lorem
+It is very easy for beginners in quantitative trading to neglect or underestimate the impacts of transaction costs on strategies. Apart from the well-known broker commissions and fees, the bulk of overall transaction cost consists of slippage and market impact.
 
-\subsection{Market Nature/Pattern}
+Slippage is the change in the price between the time a trader or a system decides to transact and the time when the order is actually at an exchange for execution. The more accurate the forecast, the more likely the security is going towards to the expected price as time passes. But the price move does not benefit the trader as he has not got his trade to the market. In addition to time, slippage is also a function of the volatility of the security. Greater volatility implies greater and more frequent price swings.
 
-lorem
+Market impact follows the basic economic principles of supply and demand and it is proportional to the size of the trade. Given the trade size is significant relative to the market, when it is a large buy order at market price, it is likely that the original supply of that security at market price is not sufficient to cover the order. As a result, the trader would need to pay more to buy the remaining positions. Same concepts apply to the sell order.
+
+\subsection{Market Regime}
+
+Most quantitative models are built with historical data that quants use past relationships and behavior to model the market and help predict the future. Therefore, when the market regime changes, biased models tend to collapse. For example, it was a strong, bull market right before the 2008 global financial crisis. If we use data from 2005 to 2007 only, we are prone to the massive downswing after the test period. Thus, it is important to select the input data and range when building models.
+
+\begin{quote}
+  The trend is your friend until it bends.
+  \textit{The Market}
+\end{quote}
 
 \subsection{Look Ahead Bias}
 
-lorem
+Look ahead bias refers to the accidental introduction of future information which may inflate the strategy performance. If the test period ranges from $t=0$ to $t=T$, then any data from $t_{T+1}, t_{T+2}, t_{T+3}, \dots$ should not be included or referred.
+
+One may avoid such a bias by carefully slicing data upto the design timespan before calculating any parameters such as, mean, standard deviation, maxima, minima, etc.
 
 \subsection{Overfitting}
 
-lorem
+Overfitting occurs when parameters are optimised against the train dataset but the performance degrades substantially when applied to an unseen dataset. As statistical models are simultaneously trying to minimise both the bias error and the variance error in order to improve model accuracy, such a situation can lead to overfitting in models, as the training error can be substantially reduced by introducing models with more flexibility (variation). However, such models can perform extremely poorly on out-of-sample data since they were essentially “fit” to the in-sample data.
+
+Overfitting can also appear on the trading strategies apart from statistical models. For example, we could optimise the Sharpe ratio by varying entry and exit thresholds. While this may improve profitability or minimise risk in the backtest, live performance is likely to vary and decrease as we may have overfit the optimisations to noise in the historical data.
+
+Spliting train dataset into independent train-validation sets can help overcome this problem. Models are trained with the train set while parameters are optimised with the validation set. Lastly, evaluate the model effectiveness on unseen test sets. The independence of the three parts help improve the robustness of models and prevent overfitting.
 
 \section*{Conclusion}
 
